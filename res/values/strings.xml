@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Usb Teather Widget</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="usb_connectoin_status">USB Connection status : </string>
+    <string name="teathing_status">teathering status</string>
+    <string name="staus_enabled">Enabled</string>
+    <string name="status_disabled">Disabled</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_disconnected">Disconnected</string>
+
+</resources>

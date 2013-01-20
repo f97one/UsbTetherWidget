@@ -10,7 +10,8 @@
 
 # generated files
 bin/
-gen/
+#gen/
+[Bb]uild[Cc]onfig.*
 
 # Local configuration file (sdk path, etc)
 local.properties

@@ -26,6 +26,7 @@
         <receiver android:name="TeatherChangeWidghet" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="net.formula97.android.usbteatherwidget.BUTTON_CLICKED" />
             </intent-filter>
 
             <meta-data

@@ -38,10 +38,12 @@
                 android:resource="@xml/widget_1x1_layout" />
         </receiver>
 
+        <!--
         <activity android:name="mediba.ad.sdk.android.openx.MasAdClickWebview" >
         </activity>
         <activity android:name="mediba.ad.sdk.android.openx.MasVideoview" >
         </activity>
+        -->
     </application>
 
 </manifest>

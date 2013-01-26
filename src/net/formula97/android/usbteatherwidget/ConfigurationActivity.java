@@ -9,9 +9,9 @@ import mediba.ad.sdk.android.openx.MasAdView;
 public class ConfigurationActivity extends Activity {
 
 	// Mediba Ad表示用
-	MasAdView masAdView = null;
-	private static final String TAG = new String("MedibaAdUseXmlActivity");
-	private static final String MY_AUID = new String("61a0a296472d71e05a72de4e665a3d697e4d457ab324253e");
+//	MasAdView masAdView = null;
+//	private static final String TAG = new String("MedibaAdUseXmlActivity");
+//	private static final String MY_AUID = new String("61a0a296472d71e05a72de4e665a3d697e4d457ab324253e");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +19,9 @@ public class ConfigurationActivity extends Activity {
 		setContentView(R.layout.activity_configuration);
 
 		// adviewのリソース取得
-		masAdView = (MasAdView) findViewById(R.id.adview);
-		masAdView.setAuid(MY_AUID);
-		masAdView.setAdListener(new adListener());
+//		masAdView = (MasAdView) findViewById(R.id.adview);
+//		masAdView.setAuid(MY_AUID);
+//		masAdView.setAdListener(new adListener());
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class ConfigurationActivity extends Activity {
 		super.onPause();
 
 		// 広告表示の停止
-		masAdView.stop();
+//		masAdView.stop();
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class ConfigurationActivity extends Activity {
 		super.onResume();
 
 		// 広告のロード開始
-		masAdView.start();
+//		masAdView.start();
 	}
 
 	/**

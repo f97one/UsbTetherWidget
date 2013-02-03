@@ -35,6 +35,8 @@ public final class R {
         public static final int status_connected=0x7f050007;
         public static final int status_disabled=0x7f050006;
         public static final int status_disconnected=0x7f050008;
+        public static final int status_invalid=0x7f05000b;
+        public static final int status_valid=0x7f05000a;
         public static final int staus_enabled=0x7f050005;
         public static final int teathing_status=0x7f050004;
         public static final int usb_connectoin_status=0x7f050003;

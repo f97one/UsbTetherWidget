@@ -1,4 +1,4 @@
-UsbTeatherWidget
+UsbTetherWidget
 ================
 
 USBテザリングをワンタッチでオン／オフできるようにするウィジェット

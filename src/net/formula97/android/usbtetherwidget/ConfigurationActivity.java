@@ -1,5 +1,6 @@
-package net.formula97.android.usbteatherwidget;
+package net.formula97.android.usbtetherwidget;
 
+import net.formula97.android.usbtetherwidget.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

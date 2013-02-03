@@ -17,24 +17,26 @@ public final class R {
         public static final int pc_connected=0x7f020003;
     }
     public static final class id {
-        public static final int ImageButton_WidgetMainBody=0x7f080010;
-        public static final int menu_settings=0x7f080011;
-        public static final int tableRow1=0x7f080000;
-        public static final int tableRow2=0x7f080004;
-        public static final int tableRow3=0x7f080008;
-        public static final int tableRow4=0x7f08000c;
-        public static final int textView1=0x7f080001;
-        public static final int textView2=0x7f080002;
-        public static final int textView3=0x7f080005;
-        public static final int textView4=0x7f08000d;
-        public static final int textView5=0x7f080006;
-        public static final int textView6=0x7f080009;
-        public static final int textView7=0x7f08000a;
-        public static final int textView8=0x7f08000e;
-        public static final int tv_tether_capability=0x7f080003;
-        public static final int tv_usb_connection_status=0x7f080007;
-        public static final int tv_wifi_control_status=0x7f08000b;
-        public static final int tv_wimax_control_status=0x7f08000f;
+        public static final int ImageButton_WidgetMainBody=0x7f080012;
+        public static final int menu_settings=0x7f080013;
+        public static final int tableRow1=0x7f080002;
+        public static final int tableRow2=0x7f080006;
+        public static final int tableRow3=0x7f08000a;
+        public static final int tableRow4=0x7f08000e;
+        public static final int textView1=0x7f080003;
+        public static final int textView2=0x7f080004;
+        public static final int textView3=0x7f080007;
+        public static final int textView4=0x7f08000f;
+        public static final int textView5=0x7f080008;
+        public static final int textView6=0x7f08000b;
+        public static final int textView7=0x7f08000c;
+        public static final int textView8=0x7f080010;
+        public static final int tl_status_list=0x7f080001;
+        public static final int tv_banner_current_status=0x7f080000;
+        public static final int tv_tether_capability=0x7f080005;
+        public static final int tv_usb_connection_status=0x7f080009;
+        public static final int tv_wifi_control_status=0x7f08000d;
+        public static final int tv_wimax_control_status=0x7f080011;
     }
     public static final class layout {
         public static final int activity_showstatus=0x7f030000;
@@ -45,10 +47,12 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int banner_current_status=0x7f05000f;
         public static final int contentdesc_widgetmain=0x7f050009;
         public static final int hello_world=0x7f050001;
         public static final int menu_settings=0x7f050002;
         public static final int separator_colong=0x7f05000e;
+        public static final int software_version=0x7f050010;
         public static final int status_connected=0x7f050007;
         public static final int status_disabled=0x7f050006;
         public static final int status_disconnected=0x7f050008;
@@ -57,7 +61,7 @@ public final class R {
         public static final int staus_enabled=0x7f050005;
         public static final int tething_capability=0x7f050004;
         public static final int usb_connectoin_status=0x7f050003;
-        public static final int wi-fi_control=0x7f05000c;
+        public static final int wifi_control=0x7f05000c;
         public static final int wimax_control=0x7f05000d;
     }
     public static final class style {

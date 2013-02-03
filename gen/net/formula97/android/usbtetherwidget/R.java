@@ -21,7 +21,7 @@ public final class R {
         public static final int menu_settings=0x7f080001;
     }
     public static final class layout {
-        public static final int activity_configuration=0x7f030000;
+        public static final int activity_showstatus=0x7f030000;
         public static final int layout_1x1=0x7f030001;
     }
     public static final class menu {

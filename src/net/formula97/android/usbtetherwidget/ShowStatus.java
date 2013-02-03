@@ -7,7 +7,7 @@ import android.view.Menu;
 import mediba.ad.sdk.android.openx.MasAdListener;
 import mediba.ad.sdk.android.openx.MasAdView;
 
-public class ConfigurationActivity extends Activity {
+public class ShowStatus extends Activity {
 
 	// Mediba Ad表示用
 //	MasAdView masAdView = null;
@@ -17,7 +17,7 @@ public class ConfigurationActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_configuration);
+		setContentView(R.layout.activity_showstatus);
 
 		// adviewのリソース取得
 //		masAdView = (MasAdView) findViewById(R.id.adview);

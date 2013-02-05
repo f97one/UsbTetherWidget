@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
     <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <CheckBoxPreference android:key="WiFi_control" android:title="@string/wifi_control"/>
-        <CheckBoxPreference android:key="WiMAX_control" android:title="@string/wimax_control"/>
+        <CheckBoxPreference android:key="WiFi_control" android:title="@string/wifi_control" android:summaryOff="@string/summary_wifi_control_off" android:summaryOn="@string/summary_wifi_cotrol_on"/>
+        <CheckBoxPreference android:key="WiMAX_control" android:title="@string/wimax_control" android:summaryOff="@string/summary_wimax_control_off" android:summaryOn="@string/summary_wimax_control_on"/>
     </PreferenceScreen>

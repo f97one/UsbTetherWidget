@@ -18,5 +18,9 @@
     <string name="separator_colong"> : </string>
     <string name="banner_current_status">Current Status</string>
     <string name="software_version">Software Version : </string>
+    <string name="summary_wifi_cotrol_on">Turn off Wi-Fi before starting Tethering</string>
+    <string name="summary_wifi_control_off">Don\'t care device\'s Wi-Fi setting</string>
+    <string name="summary_wimax_control_on">Turn on WiMAX before starting Tethering</string>
+    <string name="summary_wimax_control_off">Don\'t care device\'s WiMAX settings</string>
 
 </resources>

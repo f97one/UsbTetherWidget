@@ -59,6 +59,10 @@ public final class R {
         public static final int status_invalid=0x7f05000b;
         public static final int status_valid=0x7f05000a;
         public static final int staus_enabled=0x7f050005;
+        public static final int summary_wifi_control_off=0x7f050012;
+        public static final int summary_wifi_cotrol_on=0x7f050011;
+        public static final int summary_wimax_control_off=0x7f050014;
+        public static final int summary_wimax_control_on=0x7f050013;
         public static final int tething_capability=0x7f050004;
         public static final int usb_connectoin_status=0x7f050003;
         public static final int wifi_control=0x7f05000c;

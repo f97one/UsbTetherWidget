@@ -44,6 +44,9 @@ public class ShowStatus extends Activity {
 		tv_wifi_control_status = (TextView)findViewById(R.id.tv_wifi_control_status);
 		tv_wimax_control_status = (TextView)findViewById(R.id.tv_wimax_control_status);
 
+		// プリファレンスの読み書き用宣言
+		//   PreferenceManagerを使わないと、どういうわけかプリファレンスの
+		//   読み書きができないのだが？？？
 		spm = PreferenceManager.getDefaultSharedPreferences(this);
 		spmEditor = spm.edit();
 
@@ -104,6 +107,7 @@ public class ShowStatus extends Activity {
 		super.onResume();
 
 		setWifiControlStatusToTv();
+		setWimaxControlStatusToTv();
 
 
 		// 広告のロード開始
@@ -123,6 +127,21 @@ public class ShowStatus extends Activity {
 			tv_wifi_control_status.setText(R.string.staus_enabled);
 		} else {
 			tv_wifi_control_status.setText(R.string.status_disabled);
+		}
+	}
+
+	/**
+	 * WiMAX制御設定をプリファレンスから取得し、TextViewにセットする。
+	 */
+	private void setWimaxControlStatusToTv() {
+		boolean wimaxControl = spm.getBoolean("WiMAX_control", false);
+
+		Log.d("setWiFiControlStatusToTv", "WiMAX control setting is " + String.valueOf(wimaxControl));
+
+		if (wimaxControl) {
+			tv_wimax_control_status.setText(R.string.staus_enabled);
+		} else {
+			tv_wimax_control_status.setText(R.string.status_disabled);
 		}
 	}
 

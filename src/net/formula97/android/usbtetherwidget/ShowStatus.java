@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import mediba.ad.sdk.android.openx.MasAdListener;
 import mediba.ad.sdk.android.openx.MasAdView;
 
@@ -16,6 +17,12 @@ public class ShowStatus extends Activity {
 //	private static final String TAG = new String("MedibaAdUseXmlActivity");
 //	private static final String MY_AUID = new String("61a0a296472d71e05a72de4e665a3d697e4d457ab324253e");
 
+	// ウィジェット類の宣言
+	TextView tv_tether_capability = null;
+	TextView tv_usb_connection_status = null;
+	TextView tv_wifi_control_status = null;
+	TextView tv_wimax_control_status = null;
+
 	/* (非 Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -23,6 +30,11 @@ public class ShowStatus extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_showstatus);
+
+		tv_tether_capability = (TextView)findViewById(R.id.tv_tether_capability);
+		tv_usb_connection_status = (TextView)findViewById(R.id.tv_usb_connection_status);
+		tv_wifi_control_status = (TextView)findViewById(R.id.tv_wifi_control_status);
+		tv_wimax_control_status = (TextView)findViewById(R.id.tv_wimax_control_status);
 
 		// adviewのリソース取得
 //		masAdView = (MasAdView) findViewById(R.id.adview);

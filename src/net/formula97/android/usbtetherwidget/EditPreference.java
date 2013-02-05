@@ -12,6 +12,9 @@ import android.preference.PreferenceActivity;
  */
 public class EditPreference extends PreferenceActivity {
 
+	/* (非 Javadoc)
+	 * @see android.preference.PreferenceActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO 自動生成されたメソッド・スタブ

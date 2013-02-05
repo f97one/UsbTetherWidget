@@ -16,6 +16,9 @@ public class ShowStatus extends Activity {
 //	private static final String TAG = new String("MedibaAdUseXmlActivity");
 //	private static final String MY_AUID = new String("61a0a296472d71e05a72de4e665a3d697e4d457ab324253e");
 
+	/* (非 Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,6 +30,9 @@ public class ShowStatus extends Activity {
 //		masAdView.setAdListener(new adListener());
 	}
 
+	/* (非 Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -34,6 +40,9 @@ public class ShowStatus extends Activity {
 		return true;
 	}
 
+	/* (非 Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -51,6 +60,9 @@ public class ShowStatus extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	/* (非 Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		// TODO 自動生成されたメソッド・スタブ
@@ -60,6 +72,9 @@ public class ShowStatus extends Activity {
 //		masAdView.stop();
 	}
 
+	/* (非 Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		// TODO 自動生成されたメソッド・スタブ

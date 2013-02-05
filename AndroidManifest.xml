@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.formula97.android.usbtetherwidget"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0" android:installLocation="internalOnly">
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIMAX_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIMAX_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -44,7 +46,9 @@
         <activity android:name="mediba.ad.sdk.android.openx.MasAdClickWebview" >
         </activity>
         <activity android:name="mediba.ad.sdk.android.openx.MasVideoview" >
-        </activity>
+        </activity>
+
+
         -->
     </application>
 

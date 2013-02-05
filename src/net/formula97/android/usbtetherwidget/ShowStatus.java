@@ -3,7 +3,9 @@ package net.formula97.android.usbtetherwidget;
 import net.formula97.android.usbtetherwidget.R;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import mediba.ad.sdk.android.openx.MasAdListener;
 import mediba.ad.sdk.android.openx.MasAdView;
 
@@ -30,6 +32,23 @@ public class ShowStatus extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_configuration, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		switch (item.getItemId()) {
+		case R.id.menu_settings:
+			startActivity(new Intent(this, EditPreference.class));
+			return true;
+			//break;
+
+		default:
+			break;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

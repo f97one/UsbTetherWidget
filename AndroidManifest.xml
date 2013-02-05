@@ -50,6 +50,7 @@
 
 
         -->
+        <activity android:name="EditPreference"></activity>
     </application>
 
 </manifest>

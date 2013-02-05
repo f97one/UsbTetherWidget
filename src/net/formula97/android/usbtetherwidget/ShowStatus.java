@@ -2,8 +2,12 @@ package net.formula97.android.usbtetherwidget;
 
 import net.formula97.android.usbtetherwidget.R;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -23,6 +27,10 @@ public class ShowStatus extends Activity {
 	TextView tv_wifi_control_status = null;
 	TextView tv_wimax_control_status = null;
 
+	// プリファレンスの読み書き用
+	SharedPreferences spm;
+	SharedPreferences.Editor spmEditor;
+
 	/* (非 Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -35,6 +43,9 @@ public class ShowStatus extends Activity {
 		tv_usb_connection_status = (TextView)findViewById(R.id.tv_usb_connection_status);
 		tv_wifi_control_status = (TextView)findViewById(R.id.tv_wifi_control_status);
 		tv_wimax_control_status = (TextView)findViewById(R.id.tv_wimax_control_status);
+
+		spm = PreferenceManager.getDefaultSharedPreferences(this);
+		spmEditor = spm.edit();
 
 		// adviewのリソース取得
 //		masAdView = (MasAdView) findViewById(R.id.adview);
@@ -92,8 +103,27 @@ public class ShowStatus extends Activity {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onResume();
 
+		setWifiControlStatusToTv();
+
+
 		// 広告のロード開始
 //		masAdView.start();
+	}
+
+
+	/**
+	 * Wi-Fi制御設定をプリファレンスから取得し、TextViewにセットする。
+	 */
+	private void setWifiControlStatusToTv() {
+		boolean wifiControl = spm.getBoolean("WiFi_control", false);
+
+		Log.d("setWiFiControlStatusToTv", "Wi-Fi control setting is " + String.valueOf(wifiControl));
+
+		if (wifiControl) {
+			tv_wifi_control_status.setText(R.string.staus_enabled);
+		} else {
+			tv_wifi_control_status.setText(R.string.status_disabled);
+		}
 	}
 
 	/**

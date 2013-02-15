@@ -13,7 +13,7 @@ import android.widget.RemoteViews;
  * @author kazutoshi
  *
  */
-public class TeatherChangeWidghet extends AppWidgetProvider {
+public class TetherChangeWidghet extends AppWidgetProvider {
 
 	// 自分へのインテントフィルター
 	final String filter = "net.formula97.android.usbteatherwidget.BUTTON_CLICKED";

@@ -12,6 +12,32 @@ import android.content.Intent;
 public class TetherChangeWidghet extends AppWidgetProvider {
 
 	/* (非 Javadoc)
+	 * @see android.appwidget.AppWidgetProvider#onEnabled(android.content.Context)
+	 */
+	@Override
+	public void onEnabled(Context context) {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onEnabled(context);
+
+		// 主たる処理を行うサービスを開始する
+		Intent i = new Intent(context, WidgetManagerServices.class);
+		context.startService(i);
+	}
+
+	/* (非 Javadoc)
+	 * @see android.appwidget.AppWidgetProvider#onDisabled(android.content.Context)
+	 */
+	@Override
+	public void onDisabled(Context context) {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onDisabled(context);
+
+		// 開始されている（はずの）サービスを停止する
+		Intent i = new Intent(context, WidgetManagerServices.class);
+		context.stopService(i);
+	}
+
+	/* (非 Javadoc)
 	 * @see android.appwidget.AppWidgetProvider#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])
 	 */
 	@Override

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.formula97.android.usbtetherwidget;
 
@@ -13,8 +13,10 @@ import android.os.IBinder;
  */
 public class WidgetManagerServices extends Service {
 
+	private static String ACTION_WIDGET_TOUCH = "net.formula97.intent.ACTION_WIDGET_TOUCH";
+
 	/**
-	 * 
+	 *
 	 */
 	public WidgetManagerServices() {
 		// TODO 自動生成されたコンストラクター・スタブ

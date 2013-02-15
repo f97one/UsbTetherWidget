@@ -17,7 +17,7 @@ public final class R {
         public static final int pc_connected=0x7f020003;
     }
     public static final class id {
-        public static final int ImageButton_WidgetMainBody=0x7f080012;
+        public static final int iv_connection_status=0x7f080012;
         public static final int menu_settings=0x7f080013;
         public static final int tableRow1=0x7f080002;
         public static final int tableRow2=0x7f080006;

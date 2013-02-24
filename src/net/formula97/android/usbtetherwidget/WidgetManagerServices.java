@@ -145,7 +145,7 @@ public class WidgetManagerServices extends Service {
 	 * @param connectionEnabled boolean型、接続をONにするときはtrue、OFFにするときはfalseをセットする。
 	 * @return boolean型、WiMAX接続の切り替えに成功したらtrue、失敗したらfalseを返す。
 	 */
-	public boolean setWimaxConnection(boolean connectionEnabled) {
+	public boolean enableWimaxConnection(boolean connectionEnabled) {
 		boolean ret = false;
 
 		// WiMAXのサービスを呼び出す

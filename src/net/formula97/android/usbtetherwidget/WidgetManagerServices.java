@@ -14,6 +14,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
 import android.widget.RemoteViews;
@@ -72,6 +73,16 @@ public class WidgetManagerServices extends Service {
 		awm.updateAppWidget(cn, rv);
 
 		// ブロードキャストレシーバーを定義する
+		//   ちなみに、ここでaddActionしているブロードキャストは、API Level 14でDeprecatedに
+		//   なっておる....
+		String UMS_CONNECTED    = "android.intent.action.UMS_CONNECTED";
+		String UMS_DISCONNECTED = "android.intent.action.UMS_DISCONNECTED";
+
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction(UMS_CONNECTED);
+		intentFilter.addAction(UMS_DISCONNECTED);
+
+		registerReceiver(usbConnEvtRcvr, intentFilter);
 	}
 
 	private void onClick(RemoteViews rv) {

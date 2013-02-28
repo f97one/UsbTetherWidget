@@ -48,15 +48,17 @@ public class WidgetManagerServices extends Service {
 	@Override
 	@Deprecated
 	public void onStart(Intent intent, int flags) {
-		// TODO 自動生成されたメソッド・スタブ
+		// TODO onStartはDeprecatedなので、 onStartCommandに書き換える。
 		super.onStart(intent, flags);
 
+		// RemoteViewsに、ウィジェットで使用するレイアウトを指定する
 		RemoteViews rv = new RemoteViews(getPackageName(), R.layout.layout_1x1);
 
 		// インテントの定義
 		Intent touchIntent = new Intent();
 		touchIntent.setAction(ACTION_WIDGET_TOUCH);
 
+		// PendingIntentを使い、タッチイベントが発生したらクリック処理を行うようにする
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, touchIntent, flags);
 		rv.setOnClickPendingIntent(R.id.iv_connection_status, pendingIntent);
 
@@ -64,13 +66,16 @@ public class WidgetManagerServices extends Service {
 			onClick(rv);
 		}
 
+		// ウィジェットの状態を更新する
 		ComponentName cn = new ComponentName(getPackageName(), TetherChangeWidghet.class.getName());
 		AppWidgetManager awm = AppWidgetManager.getInstance(this);
 		awm.updateAppWidget(cn, rv);
+
+		// ブロードキャストレシーバーを定義する
 	}
 
 	private void onClick(RemoteViews rv) {
-		// TODO 自動生成されたメソッド・スタブ
+		// TODO クリック時にUSBテザリングをON/OFFする処理に変更する。
 
 		// View IDとイメージソースのIDを格納する変数を初期化
 		int viewId = R.id.iv_connection_status;

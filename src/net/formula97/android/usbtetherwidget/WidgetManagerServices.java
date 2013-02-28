@@ -70,15 +70,18 @@ public class WidgetManagerServices extends Service {
 	private void onClick(RemoteViews rv) {
 		// TODO 自動生成されたメソッド・スタブ
 
+		// View IDとイメージソースのIDを格納する変数を初期化
 		int viewId = R.id.iv_connection_status;
 		int srcId = 0;
 
+		// テザリング接続中か否かで、貼り付けるイメージソースを変える
 		if (isTetherConnected) {
 			srcId = R.drawable.pc_connected;
 		} else {
 			srcId = R.drawable.ic_launcher;
 		}
 
+		// イメージソースをウィジェットの描画エリアに張り付ける
 		rv.setImageViewResource(viewId, srcId);
 		isTetherConnected = !isTetherConnected;
 	}

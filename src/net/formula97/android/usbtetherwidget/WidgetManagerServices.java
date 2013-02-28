@@ -10,7 +10,9 @@ import java.lang.reflect.Method;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
@@ -174,4 +176,19 @@ public class WidgetManagerServices extends Service {
 
 		return ret;
 	}
+
+	/**
+	 * USB接続関連イベントを、ブロードキャストレシーバーで受信する。
+	 */
+	private BroadcastReceiver usbConnEvtRcvr = new BroadcastReceiver() {
+
+		/* (非 Javadoc)
+		 * @see android.content.BroadcastReceiver#onReceive(android.content.Context, android.content.Intent)
+		 */
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO 自動生成されたメソッド・スタブ
+
+		}
+	};
 }

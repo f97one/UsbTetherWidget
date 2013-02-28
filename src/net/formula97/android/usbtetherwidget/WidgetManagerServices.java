@@ -198,6 +198,12 @@ public class WidgetManagerServices extends Service {
 	 */
 	private BroadcastReceiver usbConnEvtRcvr = new BroadcastReceiver() {
 
+		// 画像リソースのID
+		int pictTetherConnected = R.drawable.ic_launcher;	// テザリング接続中
+		int pictPcConnected = R.drawable.pc_connected;		// PCと接続中
+		int pictNotConnected = R.drawable.not_connected;	// PCと切断中
+		int pictNotWork = R.drawable.not_work;				// 動作せず
+
 		/* (非 Javadoc)
 		 * @see android.content.BroadcastReceiver#onReceive(android.content.Context, android.content.Intent)
 		 */

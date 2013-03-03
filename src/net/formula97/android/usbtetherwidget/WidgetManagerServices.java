@@ -29,6 +29,8 @@ public class WidgetManagerServices extends Service {
 	private boolean isTetherConnected = false;
 	private boolean isUsbTetherApiEnabled = false;
 
+	RemoteViews rv = null;
+
 	/**
 	 *
 	 */
@@ -48,14 +50,54 @@ public class WidgetManagerServices extends Service {
 	/* (非 Javadoc)
 	 * @see android.app.Service#onStartCommand(android.content.Intent, int, int)
 	 */
+//	@Override
+//	@Deprecated
+//	public void onStart(Intent intent, int flags) {
+//		// TODO onStartはDeprecatedなので、 onStartCommandに書き換える。
+//		super.onStart(intent, flags);
+//
+//		// RemoteViewsに、ウィジェットで使用するレイアウトを指定する
+//		rv = new RemoteViews(getPackageName(), R.layout.layout_1x1);
+//
+//		// インテントの定義
+//		Intent touchIntent = new Intent();
+//		touchIntent.setAction(ACTION_WIDGET_TOUCH);
+//
+//		// PendingIntentを使い、タッチイベントが発生したらクリック処理を行うようにする
+//		PendingIntent pendingIntent = PendingIntent.getService(this, 0, touchIntent, flags);
+//		rv.setOnClickPendingIntent(R.id.iv_connection_status, pendingIntent);
+//
+//		if (ACTION_WIDGET_TOUCH.equals(intent.getAction())) {
+//			onClick(rv);
+//		}
+//
+//		// ウィジェットの状態を更新する
+//		ComponentName cn = new ComponentName(getPackageName(), TetherChangeWidghet.class.getName());
+//		AppWidgetManager awm = AppWidgetManager.getInstance(this);
+//		awm.updateAppWidget(cn, rv);
+//
+//		// ブロードキャストレシーバーを定義する
+//		//   ちなみに、ここでaddActionしているブロードキャストは、API Level 14でDeprecatedに
+//		//   なっておる....
+//		String UMS_CONNECTED    = "android.intent.action.UMS_CONNECTED";
+//		String UMS_DISCONNECTED = "android.intent.action.UMS_DISCONNECTED";
+//
+//		IntentFilter intentFilter = new IntentFilter();
+//		intentFilter.addAction(UMS_CONNECTED);
+//		intentFilter.addAction(UMS_DISCONNECTED);
+//
+//		registerReceiver(usbConnEvtRcvr, intentFilter);
+//	}
+
+	/* (非 Javadoc)
+	 * @see android.app.Service#onStartCommand(android.content.Intent, int, int)
+	 */
 	@Override
-	@Deprecated
-	public void onStart(Intent intent, int flags) {
-		// TODO onStartはDeprecatedなので、 onStartCommandに書き換える。
-		super.onStart(intent, flags);
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		super.onStartCommand(intent, flags, startId);
 
 		// RemoteViewsに、ウィジェットで使用するレイアウトを指定する
-		RemoteViews rv = new RemoteViews(getPackageName(), R.layout.layout_1x1);
+		rv = new RemoteViews(getPackageName(), R.layout.layout_1x1);
 
 		// インテントの定義
 		Intent touchIntent = new Intent();
@@ -85,6 +127,8 @@ public class WidgetManagerServices extends Service {
 		intentFilter.addAction(UMS_DISCONNECTED);
 
 		registerReceiver(usbConnEvtRcvr, intentFilter);
+
+		return START_STICKY_COMPATIBILITY;
 	}
 
 	private void onClick(RemoteViews rv) {

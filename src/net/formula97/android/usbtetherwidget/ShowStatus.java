@@ -166,6 +166,7 @@ public class ShowStatus extends Activity {
 		if (fi != null) {
 			Log.i(tag1, "Available Hardware information list obtained, List of these as follow:");
 
+			// 配列を先頭からLogCatに流す
 			for (int i = 0; i < fi.length; i++) {
 				if (fi[i].name != null) {
 					Log.i(tag1, "    " + fi[i].name);

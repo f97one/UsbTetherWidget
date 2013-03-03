@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.FeatureInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -106,6 +108,8 @@ public class ShowStatus extends Activity {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onResume();
 
+		showAvaliableHardwares();
+
 		setWifiControlStatusToTv();
 		setWimaxControlStatusToTv();
 
@@ -113,7 +117,6 @@ public class ShowStatus extends Activity {
 		// 広告のロード開始
 //		masAdView.start();
 	}
-
 
 	/**
 	 * Wi-Fi制御設定をプリファレンスから取得し、TextViewにセットする。
@@ -142,6 +145,36 @@ public class ShowStatus extends Activity {
 			tv_wimax_control_status.setText(R.string.staus_enabled);
 		} else {
 			tv_wimax_control_status.setText(R.string.status_disabled);
+		}
+	}
+
+	/**
+	 * サポートしているハードウェアのリストをLogCatに流す。主にデバッグ用。
+	 */
+	private void showAvaliableHardwares() {
+
+		String tag1 = "showAvailableHardwares";
+
+		// PackageManagerを取得
+		PackageManager pm = getPackageManager();
+
+		// システムがサポートする機能一覧を取得
+		FeatureInfo fi[] = pm.getSystemAvailableFeatures();
+
+		// 機能一覧の取得に失敗している場合はFetureInfo[]がnullになっているので、
+		// nullでない場合だけLogCatに流す。
+		if (fi != null) {
+			Log.i(tag1, "Available Hardware information list obtained, List of these as follow:");
+
+			for (int i = 0; i < fi.length; i++) {
+				if (fi[i].name != null) {
+					Log.i(tag1, "    " + fi[i].name);
+				} else {
+					Log.w(tag1, "    FeatureInfo Index(" + String.valueOf(i) + ") is nothing.");
+				}
+			}
+		} else {
+			Log.w(tag1, "Could not obtain available Hardware feature.");
 		}
 	}
 

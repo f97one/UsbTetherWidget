@@ -27,6 +27,8 @@ public class WidgetManagerServices extends Service {
 
 	private static String ACTION_WIDGET_TOUCH = "net.formula97.intent.ACTION_WIDGET_TOUCH";
 	private boolean isTetherConnected = false;
+	private boolean isUsbTetherApiEnabled = false;
+
 	/**
 	 *
 	 */
@@ -153,6 +155,12 @@ public class WidgetManagerServices extends Service {
 		} catch (IllegalAccessException e) {
 			// スタックトレースをLogCatに流す
 			e.printStackTrace();
+		}
+
+		// オブジェクトの取得に成功している場合はiconnがnullではないので、
+		// nullでない場合はisUsbTetherApiEnabledにtrueをセットする。
+		if (iconn != null) {
+			isUsbTetherApiEnabled = true;
 		}
 
 		return iconn;

@@ -15,8 +15,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.widget.RemoteViews;
 
 /**
@@ -27,7 +29,7 @@ public class WidgetManagerServices extends Service {
 
 	private static String ACTION_WIDGET_TOUCH = "net.formula97.intent.ACTION_WIDGET_TOUCH";
 	private boolean isTetherConnected = false;
-	private boolean isUsbTetherApiEnabled = false;
+	//private boolean isUsbTetherApiEnabled = false;
 
 	RemoteViews rv = null;
 
@@ -126,6 +128,9 @@ public class WidgetManagerServices extends Service {
 		intentFilter.addAction(UMS_CONNECTED);
 		intentFilter.addAction(UMS_DISCONNECTED);
 
+		// USBテザリングAPIが使用可能かどうかのフラグをセットする
+		Object objUsbTether = getUsbTetherApi();
+
 		registerReceiver(usbConnEvtRcvr, intentFilter);
 
 		return START_STICKY_COMPATIBILITY;
@@ -202,9 +207,11 @@ public class WidgetManagerServices extends Service {
 		}
 
 		// オブジェクトの取得に成功している場合はiconnがnullではないので、
-		// nullでない場合はisUsbTetherApiEnabledにtrueをセットする。
+		// nullでない場合はプリファレンスのUsbTetherApiEnabledにtrueをセットする。
 		if (iconn != null) {
-			isUsbTetherApiEnabled = true;
+			setUsbTetherEnableFlags(true);
+		} else {
+			setUsbTetherEnableFlags(false);
 		}
 
 		return iconn;
@@ -265,4 +272,23 @@ public class WidgetManagerServices extends Service {
 
 		}
 	};
+
+	/**
+	 * USBテザリングAPIが使用可能かどうかのフラグを、プリファレンスにセットする。
+	 * @param enabledFlag boolean型、USBテザリングAPIが使用可能な場合はtrueを、
+	 *                    使用不能な（＝APIがない）場合はfalseを、それぞれセットする。
+	 */
+	private void setUsbTetherEnableFlags(boolean enabledFlag) {
+		// デフォルトプレファレンスを呼び出す
+		String prefName = "TETHER_CONTROLLER";
+		String key = "UsbTetherEnabled";
+
+		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
+		//SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor edit = pre.edit();
+
+		// boolean値を書きこむ
+		edit.putBoolean(key, enabledFlag);
+		edit.commit();
+	}
 }

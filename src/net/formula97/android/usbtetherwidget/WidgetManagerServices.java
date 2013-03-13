@@ -313,4 +313,18 @@ public class WidgetManagerServices extends Service {
 		edit.commit();
 	}
 
+	/**
+	 * USBテザリングAPIをテストしたか否かのプリファレンス値を返す。
+	 * @return boolean型、trueなら実施済み、falseなら未実施。
+	 */
+	private boolean isTetherTested() {
+		// デフォルトプレファレンスを呼び出す
+		String key = "IsAlreadyTestedTether";
+		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
+
+		// プリファレンスから読んだ値を返す。
+		// なお、値が格納されていない場合はfalseを返す。
+		return pre.getBoolean(key, false);
+	}
+
 }

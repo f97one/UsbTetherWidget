@@ -295,4 +295,22 @@ public class WidgetManagerServices extends Service {
 		edit.putBoolean(key, enabledFlag);
 		edit.commit();
 	}
+
+	/**
+	 * USBテザリングAPIのテストをしたかどうかを、プリファレンスに書く。
+	 * @param testedFlag boolean型、trueならテスト済み、falseなら未テストを表す。
+	 */
+	private void setTestedFlags(boolean testedFlag) {
+		// デフォルトプレファレンスを呼び出す
+		String key = "IsAlreadyTestedTether";
+
+		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
+		//SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor edit = pre.edit();
+
+		// boolean値を書きこむ
+		edit.putBoolean(key, testedFlag);
+		edit.commit();
+	}
+
 }

@@ -31,6 +31,8 @@ public class WidgetManagerServices extends Service {
 	private boolean isTetherConnected = false;
 	//private boolean isUsbTetherApiEnabled = false;
 
+	private String prefName = "TETHER_CONTROLLER";
+
 	RemoteViews rv = null;
 
 	/**
@@ -129,7 +131,7 @@ public class WidgetManagerServices extends Service {
 		intentFilter.addAction(UMS_DISCONNECTED);
 
 		// USBテザリングAPIが使用可能かどうかのフラグをセットする
-		Object objUsbTether = getUsbTetherApi();
+		Object objUsbTether = getUsbTetherApi(true);
 
 		registerReceiver(usbConnEvtRcvr, intentFilter);
 
@@ -168,10 +170,11 @@ public class WidgetManagerServices extends Service {
 	/**
 	 * USBテザリングAPIを呼び出す。
 	 * 非公開APIをリフレクションで呼び出しているので、動作しない場合もあるかもしれない。
+	 * @param doesSetPreference boolean型、trueならプリファレンスにUSBテザリングAPIが使用可能かどうかの設定を書く､falseなら書かない。
 	 * @return Object型、呼び出しに成功している場合はUSbテザリングAPIのオブジェクトを、失敗している場合はnullを返す。
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getUsbTetherApi() {
+	public Object getUsbTetherApi(boolean doesSetPreference) {
 		Class c = null;
 		Field f = null;
 		Object iconn = null;
@@ -206,14 +209,16 @@ public class WidgetManagerServices extends Service {
 			e.printStackTrace();
 		}
 
-		// オブジェクトの取得に成功している場合はiconnがnullではないので、
-		// nullでない場合はプリファレンスのUsbTetherApiEnabledにtrueをセットする。
-		if (iconn != null) {
-			setUsbTetherEnableFlags(true);
-		} else {
-			setUsbTetherEnableFlags(false);
+		// Trueの場合は、プリファレンスに設定を残す。
+		if (doesSetPreference) {
+			// オブジェクトの取得に成功している場合はiconnがnullではないので、
+			// nullでない場合はプリファレンスのIsTetheringEnableにtrueをセットする。
+			if (iconn != null) {
+				setUsbTetherEnableFlags(true);
+			} else {
+				setUsbTetherEnableFlags(false);
+			}
 		}
-
 		return iconn;
 	}
 
@@ -280,8 +285,7 @@ public class WidgetManagerServices extends Service {
 	 */
 	private void setUsbTetherEnableFlags(boolean enabledFlag) {
 		// デフォルトプレファレンスを呼び出す
-		String prefName = "TETHER_CONTROLLER";
-		String key = "UsbTetherEnabled";
+		String key = "IsTetheringEnable";
 
 		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
 		//SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(this);

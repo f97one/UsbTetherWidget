@@ -314,6 +314,20 @@ public class WidgetManagerServices extends Service {
 	}
 
 	/**
+	 * USBテザリングが使用可能かのフラグをプリファレンスから読み、返す。
+	 * @return boolean型、trueなら使用可能、falseなら使用不能。
+	 */
+	private boolean isTetheringEnable() {
+		// デフォルトプレファレンスを呼び出す
+		String key = "IsTetheringEnable";
+		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
+
+		// プリファレンスから読んだ値を返す。
+		// なお、値が格納されていない場合はfalseを返す。
+		return pre.getBoolean(key, false);
+	}
+
+	/**
 	 * USBテザリングAPIをテストしたか否かのプリファレンス値を返す。
 	 * @return boolean型、trueなら実施済み、falseなら未実施。
 	 */

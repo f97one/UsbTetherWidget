@@ -131,9 +131,20 @@ public class WidgetManagerServices extends Service {
 		intentFilter.addAction(UMS_DISCONNECTED);
 
 		// USBテザリングAPIが使用可能かどうかのフラグをセットする
-		Object objUsbTether = getUsbTetherApi(true);
+		if (isTetherTested() == false) {
+			Object objUsbTether = getUsbTetherApi(true);
+			setTestedFlags(true);
+		}
 
 		registerReceiver(usbConnEvtRcvr, intentFilter);
+
+		// テザリングNGなら、テザリングNG用の画像に変える
+		if (isTetheringEnable() == false) {
+			int pictNotWork = R.drawable.not_work;
+			int viewId = R.id.iv_connection_status;
+
+			rv.setImageViewResource(viewId, pictNotWork);
+		}
 
 		return START_STICKY_COMPATIBILITY;
 	}
@@ -165,6 +176,9 @@ public class WidgetManagerServices extends Service {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onDestroy();
 		startService(new Intent(this, WidgetManagerServices.class));
+
+		// ブロードキャストレシーバーの待ち受けを解除する
+		unregisterReceiver(usbConnEvtRcvr);
 	}
 
 	/**

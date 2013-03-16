@@ -57,6 +57,7 @@ public final class R {
         public static final int status_disabled=0x7f050006;
         public static final int status_disconnected=0x7f050008;
         public static final int status_invalid=0x7f05000b;
+        public static final int status_unknown=0x7f050015;
         public static final int status_valid=0x7f05000a;
         public static final int staus_enabled=0x7f050005;
         public static final int summary_wifi_control_off=0x7f050012;

@@ -32,6 +32,7 @@ public class ShowStatus extends Activity {
 	// プリファレンスの読み書き用
 	SharedPreferences spm;
 	SharedPreferences.Editor spmEditor;
+	private String prefName = "TETHER_CONTROLLER";
 
 	/* (非 Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -51,6 +52,17 @@ public class ShowStatus extends Activity {
 		//   読み書きができないのだが？？？
 		spm = PreferenceManager.getDefaultSharedPreferences(this);
 		spmEditor = spm.edit();
+
+		// ステータス更新情報を取得するため、WidgetManagerServiceを
+		// サービス起動する
+		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
+		boolean tested = pre.getBoolean("IsAlreadyTestedTether", false);
+
+		if (!tested) {
+			Context ctx = getBaseContext();
+			Intent i = new Intent(ctx, WidgetManagerServices.class);
+			ctx.startService(i);
+		}
 
 		// adviewのリソース取得
 //		masAdView = (MasAdView) findViewById(R.id.adview);
@@ -110,18 +122,45 @@ public class ShowStatus extends Activity {
 
 		showAvaliableHardwares();
 
+		// Wi-FiとWiMAXの制御設定を取得して画面に反映する
 		setWifiControlStatusToTv();
 		setWimaxControlStatusToTv();
 
+		// テザリングAPIが使用可能かを調べて、画面に反映する
+		SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
+		boolean tested = pre.getBoolean("IsAlreadyTestedTether", false);
+		boolean apiOk = pre.getBoolean("IsTetheringEnable", false);
+		int bannerId = 0;
+
+		if (apiOk) {
+			bannerId = R.string.status_valid;
+		} else {
+			bannerId = R.string.status_invalid;
+		}
+
+		if (tested) {
+			tv_tether_capability.setText(bannerId);
+		} else {
+			tv_tether_capability.setText(R.string.status_unknown);
+		}
 
 		// 広告のロード開始
 //		masAdView.start();
+
+		// サービスを停止する
+		Context ctx = getBaseContext();
+		Intent i = new Intent(ctx, WidgetManagerServices.class);
+
+		if (!tested) {
+			ctx.stopService(i);
+		}
 	}
 
 	/**
 	 * Wi-Fi制御設定をプリファレンスから取得し、TextViewにセットする。
 	 */
 	private void setWifiControlStatusToTv() {
+		//SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
 		boolean wifiControl = spm.getBoolean("WiFi_control", false);
 
 		Log.d("setWiFiControlStatusToTv", "Wi-Fi control setting is " + String.valueOf(wifiControl));
@@ -137,6 +176,7 @@ public class ShowStatus extends Activity {
 	 * WiMAX制御設定をプリファレンスから取得し、TextViewにセットする。
 	 */
 	private void setWimaxControlStatusToTv() {
+		//SharedPreferences pre = this.getSharedPreferences(prefName, MODE_PRIVATE);
 		boolean wimaxControl = spm.getBoolean("WiMAX_control", false);
 
 		Log.d("setWiFiControlStatusToTv", "WiMAX control setting is " + String.valueOf(wimaxControl));

@@ -19,3 +19,8 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+# Project Specific libs
+factory/*.jar
+libs/*.jar
+!libs/android-support-v4.jar

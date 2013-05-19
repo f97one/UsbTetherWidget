@@ -18,7 +18,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
 import android.widget.RemoteViews;
 
 /**

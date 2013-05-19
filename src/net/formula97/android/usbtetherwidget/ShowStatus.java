@@ -1,21 +1,23 @@
 package net.formula97.android.usbtetherwidget;
 
-import net.formula97.android.usbtetherwidget.R;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
+import mediba.ad.sdk.android.openx.MasAdListener;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import mediba.ad.sdk.android.openx.MasAdListener;
-import mediba.ad.sdk.android.openx.MasAdView;
 
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
+
+@EActivity(R.layout.activity_showstatus)
 public class ShowStatus extends Activity {
 
 	// Mediba Ad表示用
@@ -24,10 +26,14 @@ public class ShowStatus extends Activity {
 //	private static final String MY_AUID = new String("61a0a296472d71e05a72de4e665a3d697e4d457ab324253e");
 
 	// ウィジェット類の宣言
-	TextView tv_tether_capability = null;
-	TextView tv_usb_connection_status = null;
-	TextView tv_wifi_control_status = null;
-	TextView tv_wimax_control_status = null;
+	@ViewById(R.id.tv_tether_capability)
+	TextView tv_tether_capability;
+	@ViewById(R.id.tv_usb_connection_status)
+	TextView tv_usb_connection_status;
+	@ViewById(R.id.tv_wifi_control_status)
+	TextView tv_wifi_control_status;
+	@ViewById(R.id.tv_wimax_control_status)
+	TextView tv_wimax_control_status;
 
 	// プリファレンスの読み書き用
 	SharedPreferences spm;
@@ -40,12 +46,7 @@ public class ShowStatus extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_showstatus);
-
-		tv_tether_capability = (TextView)findViewById(R.id.tv_tether_capability);
-		tv_usb_connection_status = (TextView)findViewById(R.id.tv_usb_connection_status);
-		tv_wifi_control_status = (TextView)findViewById(R.id.tv_wifi_control_status);
-		tv_wimax_control_status = (TextView)findViewById(R.id.tv_wimax_control_status);
+		//setContentView(R.layout.activity_showstatus);
 
 		// プリファレンスの読み書き用宣言
 		//   PreferenceManagerを使わないと、どういうわけかプリファレンスの

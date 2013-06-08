@@ -1,6 +1,6 @@
 package net.formula97.android.usbtetherwidget;
 
-import mediba.ad.sdk.android.openx.MasAdListener;
+//import mediba.ad.sdk.android.openx.MasAdListener;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -225,7 +225,7 @@ public class ShowStatus extends Activity {
 	 * @author kazutoshi
 	 *
 	 */
-	private class adListener extends MasAdListener {
+/*	private class adListener extends MasAdListener {
 
 		@Override
 		public void onFailedToReceiveAd() {
@@ -264,5 +264,5 @@ public class ShowStatus extends Activity {
 		}
 
 	}
-
+*/
 }
